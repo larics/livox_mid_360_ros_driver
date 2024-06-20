@@ -44,13 +44,18 @@ bool ParseCfgFile::ParseSummaryInfo(LidarSummaryInfo& lidar_summary_info) {
   rapidjson::Document doc;
   do {
     if (doc.ParseStream(config_file).HasParseError()) {
+      std::cout << "json parse error!" << std::endl;
       break;
     }
     if (!doc.HasMember("lidar_summary_info") || !doc["lidar_summary_info"].IsObject()) {
+      std::cout << "no lidar summary info!" << std::endl;
       break;
     }
     const rapidjson::Value &object = doc["lidar_summary_info"];
     if (!object.HasMember("lidar_type") || !object["lidar_type"].IsUint()) {
+      std::cout << "no lidar type info!" << std::endl;
+      std::cout << object.HasMember("lidar_type") << std::endl;
+      std::cout << object["lidar_type"].IsUint() << std::endl;
       break;
     }
     lidar_summary_info.lidar_type = static_cast<uint8_t>(object["lidar_type"].GetUint());
