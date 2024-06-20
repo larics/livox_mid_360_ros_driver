@@ -56,6 +56,8 @@ git clone https://github.com/Livox-SDK/livox_ros_driver2.git ws_livox/src/livox_
 
 ### 2.3 Build the Livox ROS Driver 2:
 
+Warining, build script removes `build`, `log` and `devel` folder!
+
 #### For ROS (take Noetic as an example):
 ```shell
 source /opt/ros/noetic/setup.sh
@@ -188,6 +190,8 @@ uint8   line            # laser number in lidar
 LiDAR Configurations (such as ip, port, data type... etc.) can be set via a json-style config file. Config files for single HAP, Mid360 and mixed-LiDARs are in the "config" folder. The parameter naming *'user_config_path'* in launch files indicates such json file path.
 
 1. Follow is a configuration example for HAP LiDAR (located in config/HAP_config.json):
+
+Warning: JSON does not allow comments. Putting comments in your json file will cause parsing errors.
 
 ```json
 {
